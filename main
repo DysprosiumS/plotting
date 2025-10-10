@@ -1,0 +1,17 @@
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+df = pd.read_excel('C:/Users/Senos/OneDrive/Рабочий стол/материалы курса/графики/тест.xlsx', sheet_name=0)
+
+# Построение распределения (гистограмма + KDE)
+plt.figure(figsize=(12, 8))
+
+# Гистограмма с KDE
+plt.subplot(2, 2, 1)
+sns.histplot(data=df, kde=True, bins=30)
+plt.title(f'Распределение (Гистограмма + KDE)')
+plt.xlabel('Параметр')
+plt.ylabel('Частота')
+
+plt.show()
