@@ -11,12 +11,12 @@ plt.figure(figsize=(12, 8))
 
 # Расчет статистик
 data_column = df[df.columns[0]]
+count_val = data_column.count()
 mean_val = data_column.mean()
 std_val = data_column.std()
 median_val = data_column.median()
 min_val = data_column.min()
 max_val = data_column.max()
-count_val = data_column.count()
 
 # Гистограмма с KDE
 plt.subplot(2, 2, 1)
@@ -38,20 +38,18 @@ plt.text(0.02, 0.98, stats_text,
 plt.title(f'Распределение (Гистограмма + KDE)')
 plt.xlabel('Параметр')
 plt.ylabel('Частота')
-plt.grid(True, alpha=0.3)
-plt.tight_layout()
+plt.grid(True, alpha=0.3) #сетка
+plt.tight_layout() #подгоняет кде под размер гистограммы
 
-
-
-# СОХРАНЕНИЕ СТАТИСТИКИ В TXT ФАЙЛ
+# Функция для сохранения в файл
 def save_statistics_to_txt(filename, data, column_name="Данные"):
     """
-    Сохраняет статистику в txt файл
+    Записывает статистику в txt файл
     """
     with open(filename, 'w', encoding='utf-8') as file:
         file.write(f"Статистика ")
         file.write("=" * 40 + "\n")
-        file.write(f"Количество наблюдений: {data.count()}\n")
+        file.write(f"Количество значений: {data.count()}\n")
         file.write(f"Среднее значение: {data.mean():.4f}\n")
         file.write(f"Медиана: {data.median():.4f}\n")
         file.write(f"Стандартное отклонение: {data.std():.4f}\n")
