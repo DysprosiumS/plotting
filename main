@@ -29,7 +29,7 @@ stats_text = f'''Статистики:
 Медиана: {median_val:.4f}
 Ст. откл.: {std_val:.4f}'''
 
-plt.text(0.02, 0.98, stats_text,
+plt.text(0.02, 0.97, stats_text,
          transform=plt.gca().transAxes,
          fontsize=8,
          verticalalignment='top',
