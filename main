@@ -1,15 +1,17 @@
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
+from seaborn import kdeplot
 
-df = pd.read_excel('C:/Users/Senos/OneDrive/Рабочий стол/материалы курса/графики/тест.xlsx', sheet_name=0)
+df = pd.read_excel('C:/Users/17.3 Active Systems/Desktop/Для работы/сил частицы/пересчет 2/mean.xlsx', sheet_name=1)
 
 # Построение распределения (гистограмма + KDE)
 plt.figure(figsize=(12, 8))
 
 # Гистограмма с KDE
 plt.subplot(2, 2, 1)
-sns.histplot(data=df, kde=True, bins=30)
+sns.histplot(data=df, kde=True, bins=30, legend=True)
+sns.kdeplot(data=df, x=df.columns[0], fill=True, alpha=0.5, color='green')
 plt.title(f'Распределение (Гистограмма + KDE)')
 plt.xlabel('Параметр')
 plt.ylabel('Частота')
