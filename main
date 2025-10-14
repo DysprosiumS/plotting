@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
 from seaborn import kdeplot
@@ -13,10 +14,13 @@ data_column = df[df.columns[0]]
 mean_val = data_column.mean()
 std_val = data_column.std()
 median_val = data_column.median()
+min_val = data_column.min()
+max_val = data_column.max()
+count_val = data_column.count()
 
 # Гистограмма с KDE
 plt.subplot(2, 2, 1)
-sns.histplot(data=df, kde=True, bins=30, legend=True)
+sns.histplot(data=df, bins=30, legend=True)
 sns.kdeplot(data=df, x=df.columns[0], fill=True, alpha=0.1, color='green',  linewidth=2)
 
 # Текст со статистиками
@@ -36,5 +40,33 @@ plt.xlabel('Параметр')
 plt.ylabel('Частота')
 plt.grid(True, alpha=0.3)
 plt.tight_layout()
+
+
+
+# СОХРАНЕНИЕ СТАТИСТИКИ В TXT ФАЙЛ
+def save_statistics_to_txt(filename, data, column_name="Данные"):
+    """
+    Сохраняет статистику в txt файл
+    """
+    with open(filename, 'w', encoding='utf-8') as file:
+        file.write(f"Статистика ")
+        file.write("=" * 40 + "\n")
+        file.write(f"Количество наблюдений: {data.count()}\n")
+        file.write(f"Среднее значение: {data.mean():.4f}\n")
+        file.write(f"Медиана: {data.median():.4f}\n")
+        file.write(f"Стандартное отклонение: {data.std():.4f}\n")
+        file.write(f"Минимальное значение: {data.min():.4f}\n")
+        file.write(f"Максимальное значение: {data.max():.4f}\n")
+        file.write(f"Дисперсия: {data.var():.4f}\n")
+        file.write(f"Первый квартиль (Q1): {data.quantile(0.25):.4f}\n")
+        file.write(f"Третий квартиль (Q3): {data.quantile(0.75):.4f}\n")
+        file.write(f"Межквартильный размах (IQR): {data.quantile(0.75) - data.quantile(0.25):.4f}\n")
+
+# Сохранение статистики
+column_stat = df.columns[0]
+output_filename = f'C:/Users/17.3 Active Systems/Desktop/Для работы/сил частицы/пересчет 2/statistics.txt'
+
+save_statistics_to_txt(output_filename, data_column, column_stat)
+print(f"Статистика сохранена в файл: {output_filename}")
 
 plt.show()
