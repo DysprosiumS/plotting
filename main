@@ -68,5 +68,6 @@ output_filename = f'C:/Users/17.3 Active Systems/Desktop/Для работы/с�
 
 save_statistics_to_txt(output_filename, data_column, column_stat)
 print(f"Статистика сохранена в файл: {output_filename}")
+print(df.describe())
 
 plt.show()
