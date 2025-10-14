@@ -14,6 +14,7 @@ data_column = df[df.columns[0]]
 count_val = data_column.count()
 mean_val = data_column.mean()
 std_val = data_column.std()
+sem_val = data_column.sem()
 median_val = data_column.median()
 min_val = data_column.min()
 max_val = data_column.max()
@@ -23,7 +24,7 @@ plt.subplot(2, 2, 1)
 sns.histplot(data=df, bins=15, legend=True)
 sns.kdeplot(data=df, x=df.columns[0], fill=True, alpha=0.1, color='green',  linewidth=2)
 
-# Текст со статистиками
+# Текст с некоторыми статистиками
 stats_text = f'''Статистики:
 Среднее: {mean_val:.4f}
 Медиана: {median_val:.4f}
@@ -50,15 +51,16 @@ def save_statistics_to_txt(filename, data, column_name="Данные"):
         file.write(f"Статистика ")
         file.write("=" * 40 + "\n")
         file.write(f"Количество значений: {data.count()}\n")
-        file.write(f"Среднее значение: {data.mean():.4f}\n")
-        file.write(f"Медиана: {data.median():.4f}\n")
-        file.write(f"Стандартное отклонение: {data.std():.4f}\n")
-        file.write(f"Минимальное значение: {data.min():.4f}\n")
-        file.write(f"Максимальное значение: {data.max():.4f}\n")
-        file.write(f"Дисперсия: {data.var():.4f}\n")
-        file.write(f"Первый квартиль (Q1): {data.quantile(0.25):.4f}\n")
-        file.write(f"Третий квартиль (Q3): {data.quantile(0.75):.4f}\n")
-        file.write(f"Межквартильный размах (IQR): {data.quantile(0.75) - data.quantile(0.25):.4f}\n")
+        file.write(f"Среднее значение: {data.mean():.6f}\n")
+        file.write(f"Медиана: {data.median():.6f}\n")
+        file.write(f"Стандартное отклонение: {data.std():.6f}\n")
+        file.write(f"Стандартное отклонение для среднего: {data.sem():.6f}\n")
+        file.write(f"Минимальное значение: {data.min():.6f}\n")
+        file.write(f"Максимальное значение: {data.max():.6f}\n")
+        file.write(f"Дисперсия: {data.var():.6f}\n")
+        file.write(f"Первый квартиль (Q1): {data.quantile(0.25):.6f}\n")
+        file.write(f"Третий квартиль (Q3): {data.quantile(0.75):.6f}\n")
+        file.write(f"Межквартильный размах (IQR): {data.quantile(0.75) - data.quantile(0.25):.6f}\n")
 
 # Сохранение статистики
 column_stat = df.columns[0]
