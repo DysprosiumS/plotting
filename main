@@ -11,7 +11,7 @@ plt.figure(figsize=(12, 8))
 # Гистограмма с KDE
 plt.subplot(2, 2, 1)
 sns.histplot(data=df, kde=True, bins=30, legend=True)
-sns.kdeplot(data=df, x=df.columns[0], fill=True, alpha=0.5, color='green')
+sns.kdeplot(data=df, x=df.columns[0], fill=True, alpha=0.1, color='green')
 plt.title(f'Распределение (Гистограмма + KDE)')
 plt.xlabel('Параметр')
 plt.ylabel('Частота')
