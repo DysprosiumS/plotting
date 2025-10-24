@@ -1,0 +1,36 @@
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+df = pd.read_excel('C:/Users/Senos/OneDrive/Рабочий стол/материалы курса/графики/тест.xlsx', sheet_name=0)
+
+#График
+plt.figure(figsize=(5,5))
+
+sns.histplot(data=df, bins=10, fill=True, kde=True, legend=False)
+#sns.kdeplot(data=df, fill=True, alpha = 0.2, linewidth=2)
+
+#Статистика
+column_data = df[df.columns[0]]
+count = column_data.count()
+mean = column_data.mean()
+dev = column_data.std()
+median = column_data.median()
+minimum = column_data.min()
+maximum = column_data.max()
+
+#Текстовое поле
+plot_text = f'''Статистика:
+             Среднее: {mean:.4f}
+             Ст.отклонение: {dev:.4f}'''
+
+plt.text(0.017,6.5,plot_text,
+         bbox = dict(boxstyle ='round', facecolor='white', alpha=0.8))
+
+plt.xlabel('Значения')
+plt.ylabel('Количество')
+plt.title('Пробная гистограмма')
+plt.grid(alpha=0.3)
+
+print(count, mean, median, dev, minimum, maximum)
+plt.show()
