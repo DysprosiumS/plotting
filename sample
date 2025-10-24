@@ -29,7 +29,7 @@ plt.text(0.017,6.5,plot_text,
 
 plt.xlabel('Значения')
 plt.ylabel('Количество')
-plt.title('Пробная гистограмма')
+#plt.title('Пробная гистограмма')
 plt.grid(alpha=0.3)
 
 print(count, mean, median, dev, minimum, maximum)
