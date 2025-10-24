@@ -4,12 +4,12 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from seaborn import kdeplot
 
-df = pd.read_excel('C:/Users/17.3 Active Systems/Desktop/Для работы/сил частицы/пересчет 2/mean.xlsx', sheet_name=1)
+df = pd.read_excel('ссылка на файл', sheet_name=1)
 
-# Построение распределения (гистограмма + KDE)
+# Построение распределения 
 plt.figure(figsize=(12, 8))
 
-# Расчет статистик
+# Расчет статистики
 data_column = df[df.columns[0]]
 count_val = data_column.count()
 mean_val = data_column.mean()
@@ -24,7 +24,7 @@ plt.subplot(2, 2, 1)
 sns.histplot(data=df, bins=15, legend=True)
 sns.kdeplot(data=df, x=df.columns[0], fill=True, alpha=0.1, color='green',  linewidth=2)
 
-# Текст с некоторыми статистиками
+# Текст с нужными статистиками
 stats_text = f'''Статистики:
 Среднее: {mean_val:.4f}
 Медиана: {median_val:.4f}
@@ -64,7 +64,7 @@ def save_statistics_to_txt(filename, data, column_name="Данные"):
 
 # Сохранение статистики
 column_stat = df.columns[0]
-output_filename = f'C:/Users/17.3 Active Systems/Desktop/Для работы/сил частицы/пересчет 2/statistics.txt'
+output_filename = f'ссылка на файл/statistics.txt'
 
 save_statistics_to_txt(output_filename, data_column, column_stat)
 print(f"Статистика сохранена в файл: {output_filename}")
