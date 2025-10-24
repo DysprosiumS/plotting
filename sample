@@ -2,7 +2,7 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-df = pd.read_excel('C:/Users/Senos/OneDrive/Рабочий стол/материалы курса/графики/тест.xlsx', sheet_name=0)
+df = pd.read_excel('ссылка на файл', sheet_name=0)
 
 #График
 plt.figure(figsize=(5,5))
